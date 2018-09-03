@@ -8,7 +8,7 @@
 	var roleArn = 'YOUR-ROLE-ARN-GOES-HERE';
 
 	var userLoggedIn = false;
-	var accessToken, userProfile, S3, lambda;
+	var accessToken, userProfile, lambda;
 
 	// Click event listeners for buttons
 	$('#LoginWithAmazon').click(function() {
@@ -66,11 +66,6 @@
 				alert('Unable to sign in. Please try again.');
 			} else {
 				// Instantiate aws sdk service objects now that the credentials have been updated.
-				S3 = new AWS.S3({
-    				params: {
-						Bucket: 'YOUR-BUCKET-NAME-GOES-HERE'
-					}
-				});
 				lambda = new AWS.Lambda();
 				userLoggedIn = true;
 				console.log('Successfully created AWS STS temporary credentials!');
