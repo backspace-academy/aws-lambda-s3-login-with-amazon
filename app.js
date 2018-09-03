@@ -85,7 +85,7 @@
 		FunctionName: 'BackSpace-Lambda-Lab', /* required */
 		InvocationType: 'RequestResponse',
 		LogType: 'Tail',
-		Payload: '{'key3': 'This is value3 from Browser','key2': 'This is value2 from Browser','key1': 'This is value1 from Browser'}'
+		Payload: '{"key3": "This is value3 from Browser","key2": "This is value2 from Browser","key1": "This is value1 from Browser"}'
 	  };
 	  lambda.invoke(params, function(err, data) {
 		if (err) {
