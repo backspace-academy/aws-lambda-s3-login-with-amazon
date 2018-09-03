@@ -1,1 +1,1 @@
-# aws-lambda-s3-login-with-amazon
+# BackSpace Academy Lambda S3 Login with Amazon Lab
