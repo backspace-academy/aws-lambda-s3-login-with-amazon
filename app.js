@@ -17,14 +17,12 @@
 	$('#Logout').click(function() {
 		amazon.Login.logout();
 	});
-	$('#btnInvoke').on('click', function (event) {
-	  invokeLambda();
-	});
-
-	$('#btnGet').on('click', function (event) {
-	  getLambda();
-	});
-
+	$('#btnInvoke').click(function() {
+		invokeLambda();
+	});	
+	$('#btnGet').click(function() {
+		getLambda();
+	});	
 
 	//Login with Amazon code
 	function loginWithAmazon(){
@@ -70,13 +68,14 @@
 				// Instantiate aws sdk service objects now that the credentials have been updated.
 				S3 = new AWS.S3({
     				params: {
-						Bucket: "YOUR-BUCKET-NAME-GOES-HERE"
+						Bucket: 'YOUR-BUCKET-NAME-GOES-HERE'
 					}
 				});
 				lambda = new AWS.Lambda();
 				userLoggedIn = true;
 				console.log('Successfully created AWS STS temporary credentials!');
-				alert('You are now signed in.');					}
+				alert('You are now signed in.');					
+			}
 		});
 	}
 
@@ -86,7 +85,7 @@
 		FunctionName: 'BackSpace-Lambda-Lab', /* required */
 		InvocationType: 'RequestResponse',
 		LogType: 'Tail',
-		Payload: '{"key3": "This is value3 from Browser","key2": "This is value2 from Browser","key1": "This is value1 from Browser"}'
+		Payload: '{'key3': 'This is value3 from Browser','key2': 'This is value2 from Browser','key1': 'This is value1 from Browser'}'
 	  };
 	  lambda.invoke(params, function(err, data) {
 		if (err) {
@@ -96,6 +95,22 @@
 		else {
 		  console.log(data);           // successful response
 		  alert('Invoked AWS Lambda function.');
+		}
+	  });
+	}
+
+	function getLambda(){
+	  var params = {
+		FunctionName: 'BackSpace-Lambda-Lab' /* required */
+	  };
+	  lambda.getFunction(params, function(err, data) {
+		if (err) {
+		  console.log(err, err.stack); // an error occurred
+		  alert('Failed to get AWS Lambda function.');
+		}
+		else {
+		  console.log(data);           // successful response
+		  alert('Got AWS Lambda function.');
 		}
 	  });
 	}
